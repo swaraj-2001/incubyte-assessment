@@ -17,9 +17,21 @@ public class StringCalculator {
 
 		String[] parts = normalizedInput.split(delimiter);
 		int sum = 0;
+		StringBuilder negativeNumbers = new StringBuilder();
 
 		for (String part : parts) {
-			sum += Integer.parseInt(part);
+			int number = Integer.parseInt(part);
+			if (number < 0) {
+				if (negativeNumbers.length() > 0) {
+					negativeNumbers.append(",");
+				}
+				negativeNumbers.append(number);
+			}
+			sum += number;
+		}
+
+		if (negativeNumbers.length() > 0) {
+			throw new IllegalArgumentException("negative numbers not allowed: " + negativeNumbers);
 		}
 
 		return sum;

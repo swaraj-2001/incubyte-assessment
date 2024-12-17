@@ -1,7 +1,9 @@
 package com.assesment;
 
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.Test;
 
 public class StringCalculatorTest {
 
@@ -40,5 +42,25 @@ public class StringCalculatorTest {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(3, calculator.add("//;\n1;2"),
 				"Input '//;\\n1;2' should return the sum 3 with custom delimiter ';'");
+	}
+
+	@Test
+	void testNegativeNumberThrowsException() {
+		StringCalculator calculator = new StringCalculator();
+
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			calculator.add("1,-2,3");
+		});
+		assertEquals("negative numbers not allowed: -2", exception.getMessage());
+	}
+
+	@Test
+	void testMultipleNegativeNumbersThrowsException() {
+		StringCalculator calculator = new StringCalculator();
+
+		Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+			calculator.add("1,-2,-3,4");
+		});
+		assertEquals("negative numbers not allowed: -2,-3", exception.getMessage());
 	}
 }
