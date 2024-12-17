@@ -22,4 +22,10 @@ public class StringCalculatorTest {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(3, calculator.add("1,2"), "Two numbers '1,2' should return their sum 3");
 	}
+
+	@Test
+	void testMultipleNumbersReturnsSum() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(10, calculator.add("1,2,3,4"), "Multiple numbers '1,2,3,4' should return their sum 10");
+	}
 }
