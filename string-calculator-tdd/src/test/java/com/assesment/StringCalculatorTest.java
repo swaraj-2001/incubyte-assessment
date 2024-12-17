@@ -28,4 +28,10 @@ public class StringCalculatorTest {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(10, calculator.add("1,2,3,4"), "Multiple numbers '1,2,3,4' should return their sum 10");
 	}
+
+	@Test
+	void testNewlineDelimiterReturnsSum() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(6, calculator.add("1\n2,3"), "Input '1\\n2,3' should return the sum 6");
+	}
 }
