@@ -34,4 +34,11 @@ public class StringCalculatorTest {
 		StringCalculator calculator = new StringCalculator();
 		assertEquals(6, calculator.add("1\n2,3"), "Input '1\\n2,3' should return the sum 6");
 	}
+
+	@Test
+	void testCustomDelimiterReturnsSum() {
+		StringCalculator calculator = new StringCalculator();
+		assertEquals(3, calculator.add("//;\n1;2"),
+				"Input '//;\\n1;2' should return the sum 3 with custom delimiter ';'");
+	}
 }
